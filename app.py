@@ -11,68 +11,9 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-RIKO_SVG = """
-<svg width="80" height="80" viewBox="270 55 150 260" xmlns="http://www.w3.org/2000/svg" style="shape-rendering:crispEdges;">
-<ellipse cx="340" cy="290" rx="90" ry="18" fill="#7c3aed" opacity="0.18"/>
-<rect x="290" y="170" width="100" height="90" rx="8" fill="#1e1145"/>
-<rect x="294" y="174" width="92" height="82" rx="6" fill="#2d1a6e"/>
-<rect x="305" y="185" width="70" height="28" rx="4" fill="#0d0726"/>
-<rect x="308" y="188" width="64" height="22" rx="3" fill="#0a0520"/>
-<rect x="315" y="200" width="6" height="7" rx="1" fill="#7c3aed"/>
-<rect x="324" y="196" width="6" height="11" rx="1" fill="#a78bfa"/>
-<rect x="333" y="192" width="6" height="15" rx="1" fill="#c4b5fd"/>
-<rect x="342" y="198" width="6" height="9" rx="1" fill="#a78bfa"/>
-<rect x="351" y="194" width="6" height="13" rx="1" fill="#7c3aed"/>
-<rect x="360" y="197" width="6" height="10" rx="1" fill="#c4b5fd"/>
-<circle cx="310" cy="228" r="5" fill="#7c3aed"/>
-<circle cx="310" cy="228" r="3" fill="#a78bfa"/>
-<rect x="320" y="223" width="18" height="9" rx="4" fill="#4f46e5"/>
-<rect x="344" y="223" width="12" height="9" rx="4" fill="#6366f1"/>
-<rect x="362" y="223" width="12" height="9" rx="4" fill="#7c3aed"/>
-<rect x="308" y="258" width="28" height="24" rx="4" fill="#1e1145"/>
-<rect x="344" y="258" width="28" height="24" rx="4" fill="#1e1145"/>
-<rect x="304" y="278" width="34" height="12" rx="5" fill="#2d1a6e"/>
-<rect x="342" y="278" width="34" height="12" rx="5" fill="#2d1a6e"/>
-<rect x="308" y="280" width="20" height="4" rx="2" fill="#4f46e5"/>
-<rect x="346" y="280" width="20" height="4" rx="2" fill="#4f46e5"/>
-<rect x="264" y="175" width="28" height="16" rx="6" fill="#2d1a6e"/>
-<rect x="252" y="172" width="16" height="22" rx="7" fill="#1e1145"/>
-<circle cx="244" cy="196" r="12" fill="#2d1a6e"/>
-<circle cx="244" cy="196" r="9" fill="#fbbf24"/>
-<text x="244" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="#92400e">&#8377;</text>
-<rect x="388" y="175" width="28" height="16" rx="6" fill="#2d1a6e"/>
-<rect x="404" y="172" width="16" height="22" rx="7" fill="#1e1145"/>
-<circle cx="418" cy="166" r="11" fill="#2d1a6e"/>
-<rect x="415" y="150" width="7" height="16" rx="3" fill="#c4b5fd"/>
-<rect x="413" y="158" width="5" height="12" rx="3" fill="#c4b5fd"/>
-<rect x="421" y="158" width="5" height="12" rx="3" fill="#c4b5fd"/>
-<rect x="294" y="90" width="92" height="82" rx="12" fill="#1e1145"/>
-<rect x="298" y="94" width="84" height="74" rx="10" fill="#2d1a6e"/>
-<rect x="337" y="70" width="6" height="22" rx="3" fill="#4f46e5"/>
-<circle cx="340" cy="64" r="9" fill="#7c3aed"/>
-<circle cx="340" cy="64" r="6" fill="#a78bfa"/>
-<circle cx="340" cy="64" r="3" fill="#ffffff" opacity="0.9"/>
-<rect x="286" y="118" width="10" height="22" rx="5" fill="#1e1145"/>
-<rect x="384" y="118" width="10" height="22" rx="5" fill="#1e1145"/>
-<rect x="287" y="122" width="8" height="14" rx="4" fill="#4f46e5"/>
-<rect x="385" y="122" width="8" height="14" rx="4" fill="#4f46e5"/>
-<rect x="308" y="106" width="64" height="50" rx="8" fill="#0a0520"/>
-<rect x="311" y="109" width="58" height="44" rx="6" fill="#0d0726"/>
-<path d="M322 128 Q330 118 338 128" stroke="#a78bfa" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-<circle cx="325" cy="124" r="2" fill="#c4b5fd" opacity="0.8"/>
-<path d="M343 124 Q351 124 359 124" stroke="#a78bfa" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-<path d="M341 121 Q351 129 361 121" stroke="#a78bfa" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/>
-<circle cx="317" cy="140" r="7" fill="#f87171" opacity="0.3"/>
-<circle cx="363" cy="140" r="7" fill="#f87171" opacity="0.3"/>
-<path d="M324 140 Q340 154 356 140" stroke="#a78bfa" stroke-width="3" fill="none" stroke-linecap="round"/>
-<circle cx="265" cy="150" r="2.5" fill="#fbbf24" opacity="0.8"/>
-</svg>
-"""
-
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
 html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
 
 .stApp {
@@ -84,20 +25,16 @@ html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
 }
 
 .block-container {
-    padding-top: 0rem !important;
+    padding-top: 1rem !important;
     padding-left: 2rem !important;
     padding-right: 2rem !important;
     max-width: 100% !important;
 }
 
-/* Hide sidebar entirely */
 [data-testid="stSidebar"],
 [data-testid="stSidebarCollapsedControl"],
-[data-testid="collapsedControl"] {
-    display: none !important;
-}
+[data-testid="collapsedControl"] { display: none !important; }
 
-/* Metrics */
 [data-testid="stMetric"] {
     background: rgba(255,255,255,0.04) !important;
     border: 1px solid rgba(139,92,246,0.25) !important;
@@ -117,21 +54,18 @@ html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
     font-weight: 700 !important;
 }
 
-/* Dataframe */
 [data-testid="stDataFrame"] {
     border-radius: 14px;
     border: 1px solid rgba(139,92,246,0.2) !important;
     overflow: hidden;
 }
 
-/* File uploader */
 [data-testid="stFileUploader"] {
     background: rgba(139,92,246,0.05) !important;
     border: 2px dashed rgba(139,92,246,0.4) !important;
     border-radius: 14px !important;
 }
 
-/* Alerts */
 .stAlert {
     border-radius: 12px !important;
     background: rgba(139,92,246,0.1) !important;
@@ -139,7 +73,6 @@ html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
 }
 .stAlert p { color: #c4b5fd !important; }
 
-/* Tabs */
 [data-testid="stTabs"] [data-baseweb="tab-list"] {
     background: rgba(255,255,255,0.03) !important;
     border-radius: 12px !important;
@@ -160,12 +93,10 @@ html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
     background: rgba(139,92,246,0.25) !important;
     color: #c4b5fd !important;
 }
-[data-testid="stTabs"] [data-baseweb="tab-highlight"] {
-    display: none !important;
-}
-[data-testid="stTabs"] [data-baseweb="tab-border"] {
-    display: none !important;
-}
+[data-testid="stTabs"] [data-baseweb="tab-highlight"],
+[data-testid="stTabs"] [data-baseweb="tab-border"] { display: none !important; }
+
+div[data-testid="stToggle"] label { color: #a78bfa !important; }
 
 #MainMenu { visibility: hidden; }
 footer { visibility: hidden; }
@@ -206,53 +137,50 @@ SAMPLE_CSV = """date,amount,category,merchant,hour
 2024-01-30,1200,Food,Swiggy,22"""
 
 # ── TOP NAV BAR ───────────────────────────────────────
-col_logo, col_title, col_upload, col_source = st.columns([0.8, 2.5, 2, 1.5])
+c1, c2, c3 = st.columns([1.2, 3.5, 2])
 
-with col_logo:
-    st.markdown(f"""
-        <div style='display:flex; align-items:center; gap:10px; padding-top:0.6rem;'>
-            {RIKO_SVG}
+with c1:
+    st.markdown("""
+        <div style='display:flex; align-items:center; gap:12px; padding-top:0.4rem;'>
+            <div style='font-size:3rem; line-height:1;
+                        filter:drop-shadow(0 0 10px rgba(139,92,246,0.7));'>🤖</div>
             <div>
-                <div style='font-size:1.2rem; font-weight:800;
+                <div style='font-size:1.3rem; font-weight:800; line-height:1;
                             background:linear-gradient(135deg,#a78bfa,#7c3aed);
-                            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-                            line-height:1;'>Riko</div>
-                <div style='font-size:0.62rem; color:#7c3aed; letter-spacing:0.1em;
-                            text-transform:uppercase;'>Finance AI</div>
+                            -webkit-background-clip:text;
+                            -webkit-text-fill-color:transparent;'>Riko</div>
+                <div style='font-size:0.62rem; color:#7c3aed;
+                            letter-spacing:0.1em; text-transform:uppercase;
+                            margin-top:2px;'>Finance AI</div>
             </div>
         </div>
     """, unsafe_allow_html=True)
 
-with col_title:
+with c2:
     st.markdown("""
-        <div style='padding-top:1.4rem;'>
-            <span style='font-size:1.3rem; font-weight:700; color:#ffffff;'>
+        <div style='padding-top:0.6rem;'>
+            <div style='font-size:1.35rem; font-weight:800; color:#ffffff; line-height:1.2;
+                        background:linear-gradient(135deg,#ffffff,#a78bfa);
+                        -webkit-background-clip:text; -webkit-text-fill-color:transparent;'>
                 Personal Finance Intelligence
-            </span>
-            <br>
-            <span style='font-size:0.78rem; color:#6d5fa6;'>
+            </div>
+            <div style='font-size:0.78rem; color:#6d5fa6; margin-top:4px;'>
                 Spending insights · Behavioral patterns · Smart recommendations
-            </span>
+            </div>
         </div>
     """, unsafe_allow_html=True)
 
-with col_upload:
-    st.markdown("<div style='padding-top:0.8rem;'>", unsafe_allow_html=True)
+with c3:
     uploaded_file = st.file_uploader(
-        "Upload your CSV",
-        type=["csv"],
+        "Upload CSV", type=["csv"],
         label_visibility="collapsed",
         help="Columns: date, amount, category, merchant, hour"
     )
-    st.markdown("</div>", unsafe_allow_html=True)
-
-with col_source:
-    st.markdown("<div style='padding-top:0.9rem;'>", unsafe_allow_html=True)
-    use_sample = st.toggle("Sample data", value=True)
-    st.markdown("</div>", unsafe_allow_html=True)
+    use_sample = st.toggle("✨ Use sample data", value=True)
 
 st.markdown("""
-    <hr style='border:none; border-top:1px solid rgba(139,92,246,0.2); margin:0.5rem 0 1.5rem 0;'>
+    <hr style='border:none; border-top:1px solid rgba(139,92,246,0.2);
+               margin:0.8rem 0 1.2rem 0;'>
 """, unsafe_allow_html=True)
 
 # ── LOAD DATA ─────────────────────────────────────────
@@ -260,11 +188,13 @@ if use_sample or uploaded_file is None:
     df = pd.read_csv(StringIO(SAMPLE_CSV))
     if use_sample:
         st.markdown("""
-            <div style='background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.3);
-                        border-radius:10px;padding:0.6rem 1rem;margin-bottom:1.2rem;
-                        font-size:0.82rem;color:#a78bfa;'>
+            <div style='background:rgba(139,92,246,0.1);
+                        border:1px solid rgba(139,92,246,0.3);
+                        border-radius:10px; padding:0.6rem 1rem; margin-bottom:1.2rem;
+                        font-size:0.82rem; color:#a78bfa;'>
                 ✨ Showing <strong style='color:#c4b5fd;'>sample data</strong> —
-                30 transactions. Toggle off "Sample data" and upload your own CSV to analyse it.
+                30 transactions across Food, Shopping, Transport & Entertainment.
+                Toggle off "Use sample data" and upload your own CSV to analyse it.
             </div>
         """, unsafe_allow_html=True)
 else:
@@ -303,12 +233,12 @@ GC = ['#7c3aed','#6366f1','#a78bfa','#4f46e5','#8b5cf6','#c4b5fd','#312e81','#5b
 
 def label(txt):
     st.markdown(f"""
-        <div style='font-size:0.72rem;color:#7c3aed;font-weight:600;
-                    text-transform:uppercase;letter-spacing:0.1em;
-                    margin-bottom:1rem;margin-top:0.5rem;'>✦ {txt}</div>
+        <div style='font-size:0.72rem; color:#7c3aed; font-weight:600;
+                    text-transform:uppercase; letter-spacing:0.1em;
+                    margin-bottom:1rem; margin-top:0.5rem;'>✦ {txt}</div>
     """, unsafe_allow_html=True)
 
-# ── TABS (navigation) ─────────────────────────────────
+# ── TABS ──────────────────────────────────────────────
 tab1, tab2, tab3, tab4 = st.tabs([
     "📊  Overview",
     "📈  Analytics",
@@ -319,7 +249,7 @@ tab1, tab2, tab3, tab4 = st.tabs([
 # ── OVERVIEW ──────────────────────────────────────────
 with tab1:
     label("Financial Snapshot")
-    c1,c2,c3,c4 = st.columns(4)
+    c1, c2, c3, c4 = st.columns(4)
     c1.metric("💸 Total Spending",      f"₹{round(total_spending):,}")
     c2.metric("📈 Avg per Transaction", f"₹{round(avg_spending):,}")
     c3.metric("🔥 Highest Expense",     f"₹{round(highest):,}")
@@ -376,7 +306,7 @@ with tab3:
         df['impulsive'] = (df['hour'] >= 22) | (df['amount'] > 700)
         ic = int(df['impulsive'].sum())
         nc = count - ic
-        c1,c2,c3 = st.columns(3)
+        c1, c2, c3 = st.columns(3)
         c1.metric("⚠️ Impulsive Purchases", ic)
         c2.metric("✅ Normal Purchases", nc)
         c3.metric("📊 Impulsive Rate", f"{round(ic/count*100)}%")
@@ -406,21 +336,21 @@ with tab4:
     label("Smart Recommendations")
     recs = []
     if avg_spending > 700:
-        recs.append(("💡","High Average Spend",
+        recs.append(("💡", "High Average Spend",
             f"Your average transaction is ₹{round(avg_spending):,}. Consider a monthly cap.",
             "#7c3aed"))
     if 'merchant' in df.columns:
         top_m = df.groupby('merchant')['amount'].sum().idxmax()
         top_a = df.groupby('merchant')['amount'].sum().max()
-        recs.append(("🛍️",f"Top Merchant: {top_m}",
+        recs.append(("🛍️", f"Top Merchant: {top_m}",
             f"₹{round(top_a):,} spent here. Worth monitoring closely.", "#6366f1"))
     if 'hour' in df.columns:
         night = df[df['hour'] >= 22]['amount'].sum()
         if night > 0:
-            recs.append(("🌙","Late Night Spending",
+            recs.append(("🌙", "Late Night Spending",
                 f"₹{round(night):,} spent after 10pm. Try a spending cut-off.", "#8b5cf6"))
     if count > 20:
-        recs.append(("📊","Transaction Volume",
+        recs.append(("📊", "Transaction Volume",
             f"{count} transactions logged. Weekly reviews help catch patterns early.",
             "#4f46e5"))
     if not recs:
@@ -431,9 +361,13 @@ with tab4:
                 <div style='background:rgba(255,255,255,0.03);
                             border:1px solid rgba(139,92,246,0.2);
                             border-left:4px solid {color};
-                            border-radius:14px;padding:1.2rem 1.5rem;margin-bottom:1rem;'>
-                    <div style='font-weight:700;color:#ffffff;
-                                margin-bottom:0.4rem;font-size:0.95rem;'>{icon} {title}</div>
-                    <div style='color:#9ca3af;font-size:0.87rem;line-height:1.6;'>{text}</div>
+                            border-radius:14px; padding:1.2rem 1.5rem; margin-bottom:1rem;'>
+                    <div style='font-weight:700; color:#ffffff;
+                                margin-bottom:0.4rem; font-size:0.95rem;'>
+                        {icon} {title}
+                    </div>
+                    <div style='color:#9ca3af; font-size:0.87rem; line-height:1.6;'>
+                        {text}
+                    </div>
                 </div>
             """, unsafe_allow_html=True)
