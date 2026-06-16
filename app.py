@@ -11,15 +11,19 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+# Force sidebar open permanently
 st.markdown("""
+<script>
+    window.addEventListener('load', function() {
+        const sidebar = window.parent.document.querySelector('[data-testid="stSidebar"]');
+        const collapseBtn = window.parent.document.querySelector('[data-testid="stSidebarCollapsedControl"]');
+        if (collapseBtn) collapseBtn.style.display = 'none';
+        if (sidebar) sidebar.setAttribute('aria-expanded', 'true');
+    });
+</script>
 <style>
 [data-testid="stSidebarCollapsedControl"] { display: none !important; }
 [data-testid="collapsedControl"] { display: none !important; }
-button[kind="header"] { display: none !important; }
-section[data-testid="stSidebar"] {
-    width: 300px !important;
-    min-width: 300px !important;
-}
 </style>
 """, unsafe_allow_html=True)
 
