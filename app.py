@@ -7,10 +7,70 @@ from io import StringIO
 
 st.set_page_config(
     page_title="Riko — Finance Intelligence",
-    page_icon="💰",
+    page_icon="🤖",
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+RIKO_SVG = """
+<svg width="130" height="130" viewBox="270 55 150 260" xmlns="http://www.w3.org/2000/svg" style="shape-rendering:crispEdges;">
+<ellipse cx="340" cy="290" rx="90" ry="18" fill="#7c3aed" opacity="0.18"/>
+<rect x="290" y="170" width="100" height="90" rx="8" fill="#1e1145"/>
+<rect x="294" y="174" width="92" height="82" rx="6" fill="#2d1a6e"/>
+<rect x="305" y="185" width="70" height="28" rx="4" fill="#0d0726"/>
+<rect x="308" y="188" width="64" height="22" rx="3" fill="#0a0520"/>
+<rect x="315" y="200" width="6" height="7" rx="1" fill="#7c3aed"/>
+<rect x="324" y="196" width="6" height="11" rx="1" fill="#a78bfa"/>
+<rect x="333" y="192" width="6" height="15" rx="1" fill="#c4b5fd"/>
+<rect x="342" y="198" width="6" height="9" rx="1" fill="#a78bfa"/>
+<rect x="351" y="194" width="6" height="13" rx="1" fill="#7c3aed"/>
+<rect x="360" y="197" width="6" height="10" rx="1" fill="#c4b5fd"/>
+<circle cx="310" cy="228" r="5" fill="#7c3aed"/>
+<circle cx="310" cy="228" r="3" fill="#a78bfa"/>
+<rect x="320" y="223" width="18" height="9" rx="4" fill="#4f46e5"/>
+<rect x="344" y="223" width="12" height="9" rx="4" fill="#6366f1"/>
+<rect x="362" y="223" width="12" height="9" rx="4" fill="#7c3aed"/>
+<rect x="308" y="258" width="28" height="24" rx="4" fill="#1e1145"/>
+<rect x="344" y="258" width="28" height="24" rx="4" fill="#1e1145"/>
+<rect x="304" y="278" width="34" height="12" rx="5" fill="#2d1a6e"/>
+<rect x="342" y="278" width="34" height="12" rx="5" fill="#2d1a6e"/>
+<rect x="308" y="280" width="20" height="4" rx="2" fill="#4f46e5"/>
+<rect x="346" y="280" width="20" height="4" rx="2" fill="#4f46e5"/>
+<rect x="264" y="175" width="28" height="16" rx="6" fill="#2d1a6e"/>
+<rect x="252" y="172" width="16" height="22" rx="7" fill="#1e1145"/>
+<circle cx="244" cy="196" r="12" fill="#2d1a6e"/>
+<circle cx="244" cy="196" r="9" fill="#fbbf24"/>
+<text x="244" y="200" text-anchor="middle" font-size="11" font-weight="700" fill="#92400e">&#8377;</text>
+<rect x="388" y="175" width="28" height="16" rx="6" fill="#2d1a6e"/>
+<rect x="404" y="172" width="16" height="22" rx="7" fill="#1e1145"/>
+<circle cx="418" cy="166" r="11" fill="#2d1a6e"/>
+<rect x="415" y="150" width="7" height="16" rx="3" fill="#c4b5fd"/>
+<rect x="413" y="158" width="5" height="12" rx="3" fill="#c4b5fd"/>
+<rect x="421" y="158" width="5" height="12" rx="3" fill="#c4b5fd"/>
+<rect x="294" y="90" width="92" height="82" rx="12" fill="#1e1145"/>
+<rect x="298" y="94" width="84" height="74" rx="10" fill="#2d1a6e"/>
+<rect x="337" y="70" width="6" height="22" rx="3" fill="#4f46e5"/>
+<circle cx="340" cy="64" r="9" fill="#7c3aed"/>
+<circle cx="340" cy="64" r="6" fill="#a78bfa"/>
+<circle cx="340" cy="64" r="3" fill="#ffffff" opacity="0.9"/>
+<rect x="286" y="118" width="10" height="22" rx="5" fill="#1e1145"/>
+<rect x="384" y="118" width="10" height="22" rx="5" fill="#1e1145"/>
+<rect x="287" y="122" width="8" height="14" rx="4" fill="#4f46e5"/>
+<rect x="385" y="122" width="8" height="14" rx="4" fill="#4f46e5"/>
+<rect x="308" y="106" width="64" height="50" rx="8" fill="#0a0520"/>
+<rect x="311" y="109" width="58" height="44" rx="6" fill="#0d0726"/>
+<path d="M322 128 Q330 118 338 128" stroke="#a78bfa" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+<circle cx="325" cy="124" r="2" fill="#c4b5fd" opacity="0.8"/>
+<path d="M343 124 Q351 124 359 124" stroke="#a78bfa" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+<path d="M341 121 Q351 129 361 121" stroke="#a78bfa" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/>
+<circle cx="317" cy="140" r="7" fill="#f87171" opacity="0.3"/>
+<circle cx="363" cy="140" r="7" fill="#f87171" opacity="0.3"/>
+<path d="M324 140 Q340 154 356 140" stroke="#a78bfa" stroke-width="3" fill="none" stroke-linecap="round"/>
+<circle cx="265" cy="150" r="2.5" fill="#fbbf24" opacity="0.8"/>
+<circle cx="415" cy="240" r="2" fill="#c4b5fd" opacity="0.6"/>
+<circle cx="272" cy="230" r="1.8" fill="#a78bfa" opacity="0.5"/>
+</svg>
+"""
 
 st.markdown("""
 <style>
@@ -27,25 +87,15 @@ html, body, [class*="css"] {
     ) !important;
     background-attachment: fixed !important;
 }
-/* Force sidebar always open — hide collapse button */
-[data-testid="stSidebarCollapsedControl"] {
-    display: none !important;
-}
-[data-testid="stSidebarContent"] {
-    transform: none !important;
-}
-section[data-testid="stSidebar"][aria-expanded="false"] {
-    margin-left: 0 !important;
-    transform: translateX(0) !important;
-    width: 280px !important;
-    min-width: 280px !important;
-    visibility: visible !important;
-}
 
 .block-container {
     padding-top: 1.5rem !important;
     padding-left: 2.5rem !important;
     padding-right: 2.5rem !important;
+}
+
+[data-testid="stSidebarCollapsedControl"] {
+    display: none !important;
 }
 
 [data-testid="stSidebar"] {
@@ -118,13 +168,6 @@ div[data-testid="stButton"] button {
     border: none !important;
     border-radius: 10px !important;
     font-weight: 600 !important;
-    padding: 0.5rem 1.5rem !important;
-    font-size: 0.88rem !important;
-}
-
-div[data-testid="stButton"] button:hover {
-    background: linear-gradient(135deg, #6d28d9, #4f46e5) !important;
-    transform: translateY(-1px);
 }
 
 #MainMenu {visibility: hidden;}
@@ -133,7 +176,6 @@ header {visibility: hidden;}
 </style>
 """, unsafe_allow_html=True)
 
-# ── SAMPLE DATA ───────────────────────────────────────
 SAMPLE_CSV = """date,amount,category,merchant,hour
 2024-01-01,450,Food,Swiggy,13
 2024-01-02,1200,Shopping,Amazon,22
@@ -168,14 +210,13 @@ SAMPLE_CSV = """date,amount,category,merchant,hour
 
 # ── SIDEBAR ──────────────────────────────────────────
 with st.sidebar:
-    st.markdown("""
-        <div style='text-align:center; padding-bottom: 1.5rem;'>
-            <div style='font-size: 2.8rem;
-                        filter: drop-shadow(0 0 12px rgba(139,92,246,0.8));'>💰</div>
+    st.markdown(f"""
+        <div style='text-align:center; padding-bottom: 0.5rem; padding-top: 0.5rem;'>
+            {RIKO_SVG}
             <div style='font-size: 1.5rem; font-weight: 800;
                         background: linear-gradient(135deg, #a78bfa, #7c3aed);
                         -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-                        margin-top: 0.3rem;'>Riko</div>
+                        margin-top: -0.5rem;'>Riko</div>
             <div style='font-size: 0.72rem; color: #7c3aed; letter-spacing: 0.12em;
                         text-transform: uppercase; margin-top: 2px;'>Finance Intelligence</div>
         </div>
@@ -204,8 +245,7 @@ with st.sidebar:
     uploaded_file = None
     if data_source == "📁 Upload my CSV":
         uploaded_file = st.file_uploader(
-            "Upload CSV",
-            type=["csv"],
+            "Upload CSV", type=["csv"],
             help="Columns: date, amount, category, merchant, hour"
         )
 
@@ -251,7 +291,7 @@ if data_source == "✨ Use sample data":
                     font-size: 0.82rem; color: #a78bfa;'>
             ✨ Showing <strong style='color:#c4b5fd;'>sample data</strong> —
             30 transactions across Food, Shopping, Transport & Entertainment.
-            Switch to "Upload my CSV" in the sidebar to use your own data.
+            Switch to "Upload my CSV" in the sidebar to analyse your own data.
         </div>
     """, unsafe_allow_html=True)
 elif uploaded_file is not None:
@@ -267,8 +307,7 @@ else:
             st.markdown(f"""
                 <div style='background: rgba(255,255,255,0.03);
                             border: 1px solid rgba(139,92,246,0.2);
-                            border-radius: 18px; padding: 1.8rem 1.5rem;
-                            text-align: center;'>
+                            border-radius: 18px; padding: 1.8rem 1.5rem; text-align: center;'>
                     <div style='font-size:2.2rem; margin-bottom:0.8rem;'>{icon}</div>
                     <div style='font-weight:700; color:#ffffff; margin-bottom:0.5rem;'>{title}</div>
                     <div style='font-size:0.78rem; color:#6d5fa6; line-height:1.5;'>{desc}</div>
@@ -328,11 +367,10 @@ def section_label(text):
 if selected == "📊 Overview":
     section_label("Financial Snapshot")
     c1, c2, c3, c4 = st.columns(4)
-    c1.metric("💸 Total Spending",     f"₹{round(total_spending):,}")
-    c2.metric("📈 Avg per Transaction",f"₹{round(avg_spending):,}")
-    c3.metric("🔥 Highest Expense",    f"₹{round(highest_expense):,}")
-    c4.metric("🧾 Total Transactions", transaction_count)
-
+    c1.metric("💸 Total Spending",      f"₹{round(total_spending):,}")
+    c2.metric("📈 Avg per Transaction", f"₹{round(avg_spending):,}")
+    c3.metric("🔥 Highest Expense",     f"₹{round(highest_expense):,}")
+    c4.metric("🧾 Total Transactions",  transaction_count)
     st.markdown("<br>", unsafe_allow_html=True)
     section_label("Transaction Log")
     st.dataframe(df, use_container_width=True, height=380)
@@ -374,8 +412,7 @@ elif selected == "📈 Analytics":
             fill='tozeroy',
             fillcolor='rgba(139,92,246,0.08)',
         ))
-        fig3.update_layout(**CHART_LAYOUT, title_text="Daily Spending Trend",
-                           showlegend=False)
+        fig3.update_layout(**CHART_LAYOUT, title_text="Daily Spending Trend", showlegend=False)
         st.plotly_chart(fig3, use_container_width=True)
 
     if 'category' in df.columns:
