@@ -8,11 +8,11 @@ st.set_page_config(
     page_title="Riko — Finance Intelligence",
     page_icon="🤖",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="collapsed"
 )
 
 RIKO_SVG = """
-<svg width="130" height="130" viewBox="270 55 150 260" xmlns="http://www.w3.org/2000/svg" style="shape-rendering:crispEdges;">
+<svg width="80" height="80" viewBox="270 55 150 260" xmlns="http://www.w3.org/2000/svg" style="shape-rendering:crispEdges;">
 <ellipse cx="340" cy="290" rx="90" ry="18" fill="#7c3aed" opacity="0.18"/>
 <rect x="290" y="170" width="100" height="90" rx="8" fill="#1e1145"/>
 <rect x="294" y="174" width="92" height="82" rx="6" fill="#2d1a6e"/>
@@ -66,7 +66,6 @@ RIKO_SVG = """
 <circle cx="363" cy="140" r="7" fill="#f87171" opacity="0.3"/>
 <path d="M324 140 Q340 154 356 140" stroke="#a78bfa" stroke-width="3" fill="none" stroke-linecap="round"/>
 <circle cx="265" cy="150" r="2.5" fill="#fbbf24" opacity="0.8"/>
-<circle cx="415" cy="240" r="2" fill="#c4b5fd" opacity="0.6"/>
 </svg>
 """
 
@@ -85,62 +84,26 @@ html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
 }
 
 .block-container {
-    padding-top: 1.5rem !important;
-    padding-left: 2.5rem !important;
-    padding-right: 2.5rem !important;
+    padding-top: 0rem !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    max-width: 100% !important;
 }
 
-/* ── HIDE COLLAPSE BUTTON — every selector Streamlit uses ── */
+/* Hide sidebar entirely */
+[data-testid="stSidebar"],
 [data-testid="stSidebarCollapsedControl"],
-[data-testid="collapsedControl"],
-button[data-testid="stSidebarCollapsedControl"],
-button[aria-label="Close sidebar"],
-button[aria-label="Open sidebar"],
-button[aria-label="collapse sidebar"],
-button[aria-label="expand sidebar"],
-.st-emotion-cache-1rtdyuf,
-.st-emotion-cache-1dp5vir,
-section[data-testid="stSidebar"] > div > div > div > button,
-section[data-testid="stSidebarNav"] ~ div button {
+[data-testid="collapsedControl"] {
     display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-    width: 0 !important;
-    height: 0 !important;
 }
 
-/* ── SIDEBAR ── */
-[data-testid="stSidebar"] {
-    background: rgba(15, 8, 40, 0.97) !important;
-    border-right: 1px solid rgba(139, 92, 246, 0.25) !important;
-    min-width: 280px !important;
-    width: 280px !important;
-}
-
-[data-testid="stSidebar"] p,
-[data-testid="stSidebar"] label,
-[data-testid="stSidebar"] div { color: #c4b5fd !important; }
-
-[data-testid="stSidebar"] .stRadio label {
-    color: #a78bfa !important;
-    font-size: 0.88rem !important;
-    padding: 0.5rem 0.8rem;
-    border-radius: 8px;
-}
-
-[data-testid="stSidebar"] .stRadio label:hover {
-    background: rgba(139, 92, 246, 0.15) !important;
-}
-
-/* ── METRICS ── */
+/* Metrics */
 [data-testid="stMetric"] {
     background: rgba(255,255,255,0.04) !important;
     border: 1px solid rgba(139,92,246,0.25) !important;
     border-radius: 16px !important;
     padding: 1.2rem 1.5rem !important;
 }
-
 [data-testid="stMetricLabel"] {
     color: #a78bfa !important;
     font-size: 0.78rem !important;
@@ -148,28 +111,27 @@ section[data-testid="stSidebarNav"] ~ div button {
     text-transform: uppercase !important;
     letter-spacing: 0.05em !important;
 }
-
 [data-testid="stMetricValue"] {
     color: #ffffff !important;
     font-size: 1.9rem !important;
     font-weight: 700 !important;
 }
 
-/* ── DATAFRAME ── */
+/* Dataframe */
 [data-testid="stDataFrame"] {
     border-radius: 14px;
     border: 1px solid rgba(139,92,246,0.2) !important;
     overflow: hidden;
 }
 
-/* ── FILE UPLOADER ── */
+/* File uploader */
 [data-testid="stFileUploader"] {
     background: rgba(139,92,246,0.05) !important;
     border: 2px dashed rgba(139,92,246,0.4) !important;
     border-radius: 14px !important;
 }
 
-/* ── ALERTS ── */
+/* Alerts */
 .stAlert {
     border-radius: 12px !important;
     background: rgba(139,92,246,0.1) !important;
@@ -177,7 +139,34 @@ section[data-testid="stSidebarNav"] ~ div button {
 }
 .stAlert p { color: #c4b5fd !important; }
 
-/* ── HIDE STREAMLIT UI ── */
+/* Tabs */
+[data-testid="stTabs"] [data-baseweb="tab-list"] {
+    background: rgba(255,255,255,0.03) !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(139,92,246,0.2) !important;
+    padding: 4px !important;
+    gap: 4px !important;
+}
+[data-testid="stTabs"] [data-baseweb="tab"] {
+    background: transparent !important;
+    border-radius: 8px !important;
+    color: #6d5fa6 !important;
+    font-weight: 500 !important;
+    font-size: 0.88rem !important;
+    padding: 0.5rem 1.2rem !important;
+    border: none !important;
+}
+[data-testid="stTabs"] [aria-selected="true"] {
+    background: rgba(139,92,246,0.25) !important;
+    color: #c4b5fd !important;
+}
+[data-testid="stTabs"] [data-baseweb="tab-highlight"] {
+    display: none !important;
+}
+[data-testid="stTabs"] [data-baseweb="tab-border"] {
+    display: none !important;
+}
+
 #MainMenu { visibility: hidden; }
 footer { visibility: hidden; }
 header { visibility: hidden; }
@@ -216,112 +205,70 @@ SAMPLE_CSV = """date,amount,category,merchant,hour
 2024-01-29,650,Entertainment,BookMyShow,19
 2024-01-30,1200,Food,Swiggy,22"""
 
-# ── SIDEBAR ──────────────────────────────────────────
-with st.sidebar:
+# ── TOP NAV BAR ───────────────────────────────────────
+col_logo, col_title, col_upload, col_source = st.columns([0.8, 2.5, 2, 1.5])
+
+with col_logo:
     st.markdown(f"""
-        <div style='text-align:center; padding: 0.5rem 0 0.5rem 0;'>
+        <div style='display:flex; align-items:center; gap:10px; padding-top:0.6rem;'>
             {RIKO_SVG}
-            <div style='font-size:1.5rem; font-weight:800;
-                        background:linear-gradient(135deg,#a78bfa,#7c3aed);
-                        -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-                        margin-top:-0.5rem;'>Riko</div>
-            <div style='font-size:0.72rem; color:#7c3aed; letter-spacing:0.12em;
-                        text-transform:uppercase; margin-top:2px;'>Finance Intelligence</div>
-        </div>
-    """, unsafe_allow_html=True)
-
-    selected = st.radio(
-        "nav",
-        ["📊 Overview", "📈 Analytics", "🧠 Behavior", "💡 Recommendations"],
-        label_visibility="collapsed"
-    )
-
-    st.markdown("""
-        <hr style='border:none;border-top:1px solid rgba(139,92,246,0.2);margin:1rem 0;'>
-        <div style='font-size:0.72rem;color:#7c3aed;font-weight:600;
-                    text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.6rem;'>
-            Data Source
-        </div>
-    """, unsafe_allow_html=True)
-
-    data_source = st.radio(
-        "src",
-        ["✨ Use sample data", "📁 Upload my CSV"],
-        label_visibility="collapsed"
-    )
-
-    uploaded_file = None
-    if data_source == "📁 Upload my CSV":
-        uploaded_file = st.file_uploader(
-            "Upload CSV", type=["csv"],
-            help="Columns: date, amount, category, merchant, hour"
-        )
-
-    st.markdown("""
-        <div style='margin-top:1rem;padding:0.9rem 1rem;
-                    background:rgba(139,92,246,0.08);
-                    border-radius:10px;border:1px solid rgba(139,92,246,0.2);'>
-            <div style='font-size:0.72rem;color:#a78bfa;font-weight:600;
-                        text-transform:uppercase;letter-spacing:0.08em;'>
-                📋 Expected columns
-            </div>
-            <div style='font-size:0.75rem;color:#6d5fa6;margin-top:6px;line-height:1.6;'>
-                date · amount · category<br>merchant · hour
+            <div>
+                <div style='font-size:1.2rem; font-weight:800;
+                            background:linear-gradient(135deg,#a78bfa,#7c3aed);
+                            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+                            line-height:1;'>Riko</div>
+                <div style='font-size:0.62rem; color:#7c3aed; letter-spacing:0.1em;
+                            text-transform:uppercase;'>Finance AI</div>
             </div>
         </div>
     """, unsafe_allow_html=True)
 
-# ── HEADER ───────────────────────────────────────────
+with col_title:
+    st.markdown("""
+        <div style='padding-top:1.4rem;'>
+            <span style='font-size:1.3rem; font-weight:700; color:#ffffff;'>
+                Personal Finance Intelligence
+            </span>
+            <br>
+            <span style='font-size:0.78rem; color:#6d5fa6;'>
+                Spending insights · Behavioral patterns · Smart recommendations
+            </span>
+        </div>
+    """, unsafe_allow_html=True)
+
+with col_upload:
+    st.markdown("<div style='padding-top:0.8rem;'>", unsafe_allow_html=True)
+    uploaded_file = st.file_uploader(
+        "Upload your CSV",
+        type=["csv"],
+        label_visibility="collapsed",
+        help="Columns: date, amount, category, merchant, hour"
+    )
+    st.markdown("</div>", unsafe_allow_html=True)
+
+with col_source:
+    st.markdown("<div style='padding-top:0.9rem;'>", unsafe_allow_html=True)
+    use_sample = st.toggle("Sample data", value=True)
+    st.markdown("</div>", unsafe_allow_html=True)
+
 st.markdown("""
-    <div style='margin-bottom:2rem;'>
-        <div style='font-size:0.72rem;color:#7c3aed;font-weight:600;
-                    text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.4rem;'>
-            ✦ AI-POWERED DASHBOARD
-        </div>
-        <h1 style='font-size:2.2rem;font-weight:800;margin:0;
-                   background:linear-gradient(135deg,#ffffff 0%,#a78bfa 60%,#7c3aed 100%);
-                   -webkit-background-clip:text;-webkit-text-fill-color:transparent;'>
-            Personal Finance Intelligence
-        </h1>
-        <p style='color:#6d5fa6;margin:0.4rem 0 0 0;font-size:0.92rem;'>
-            Spending insights · Behavioral patterns · Smart recommendations
-        </p>
-    </div>
+    <hr style='border:none; border-top:1px solid rgba(139,92,246,0.2); margin:0.5rem 0 1.5rem 0;'>
 """, unsafe_allow_html=True)
 
 # ── LOAD DATA ─────────────────────────────────────────
-if data_source == "✨ Use sample data":
+if use_sample or uploaded_file is None:
     df = pd.read_csv(StringIO(SAMPLE_CSV))
-    st.markdown("""
-        <div style='background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.3);
-                    border-radius:10px;padding:0.7rem 1rem;margin-bottom:1.5rem;
-                    font-size:0.82rem;color:#a78bfa;'>
-            ✨ Showing <strong style='color:#c4b5fd;'>sample data</strong> —
-            30 transactions across Food, Shopping, Transport & Entertainment.
-            Switch to "Upload my CSV" in the sidebar to use your own data.
-        </div>
-    """, unsafe_allow_html=True)
-elif uploaded_file is not None:
-    df = pd.read_csv(uploaded_file)
+    if use_sample:
+        st.markdown("""
+            <div style='background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.3);
+                        border-radius:10px;padding:0.6rem 1rem;margin-bottom:1.2rem;
+                        font-size:0.82rem;color:#a78bfa;'>
+                ✨ Showing <strong style='color:#c4b5fd;'>sample data</strong> —
+                30 transactions. Toggle off "Sample data" and upload your own CSV to analyse it.
+            </div>
+        """, unsafe_allow_html=True)
 else:
-    for col, (icon, title, desc) in zip(st.columns(3), [
-        ("📂", "Upload CSV", "Bank statements, UPI exports,<br>GPay, PhonePe, Paytm"),
-        ("🧠", "Get Insights", "Spending patterns, behavioral<br>analysis, risk detection"),
-        ("💡", "Take Action", "Personalised recommendations<br>to improve your finances"),
-    ]):
-        with col:
-            st.markdown(f"""
-                <div style='background:rgba(255,255,255,0.03);
-                            border:1px solid rgba(139,92,246,0.2);
-                            border-radius:18px;padding:1.8rem 1.5rem;text-align:center;'>
-                    <div style='font-size:2.2rem;margin-bottom:0.8rem;'>{icon}</div>
-                    <div style='font-weight:700;color:#ffffff;margin-bottom:0.5rem;'>{title}</div>
-                    <div style='font-size:0.78rem;color:#6d5fa6;line-height:1.5;'>{desc}</div>
-                </div>
-            """, unsafe_allow_html=True)
-    st.markdown("<br>", unsafe_allow_html=True)
-    st.info("👈 Choose **Use sample data** or upload your own CSV from the sidebar.")
-    st.stop()
+    df = pd.read_csv(uploaded_file)
 
 # ── CLEAN ─────────────────────────────────────────────
 df.columns = df.columns.str.lower().str.strip()
@@ -361,8 +308,16 @@ def label(txt):
                     margin-bottom:1rem;margin-top:0.5rem;'>✦ {txt}</div>
     """, unsafe_allow_html=True)
 
+# ── TABS (navigation) ─────────────────────────────────
+tab1, tab2, tab3, tab4 = st.tabs([
+    "📊  Overview",
+    "📈  Analytics",
+    "🧠  Behavior",
+    "💡  Recommendations"
+])
+
 # ── OVERVIEW ──────────────────────────────────────────
-if selected == "📊 Overview":
+with tab1:
     label("Financial Snapshot")
     c1,c2,c3,c4 = st.columns(4)
     c1.metric("💸 Total Spending",      f"₹{round(total_spending):,}")
@@ -374,7 +329,7 @@ if selected == "📊 Overview":
     st.dataframe(df, use_container_width=True, height=380)
 
 # ── ANALYTICS ─────────────────────────────────────────
-elif selected == "📈 Analytics":
+with tab2:
     label("Spending Analytics")
     c1, c2 = st.columns(2)
     if 'category' in df.columns:
@@ -415,7 +370,7 @@ elif selected == "📈 Analytics":
         st.plotly_chart(f4, use_container_width=True)
 
 # ── BEHAVIOR ──────────────────────────────────────────
-elif selected == "🧠 Behavior":
+with tab3:
     label("Behavioral Analysis")
     if 'hour' in df.columns:
         df['impulsive'] = (df['hour'] >= 22) | (df['amount'] > 700)
@@ -447,7 +402,7 @@ elif selected == "🧠 Behavior":
         st.info("Add an 'hour' column (0–23) to unlock behavioral insights.")
 
 # ── RECOMMENDATIONS ───────────────────────────────────
-elif selected == "💡 Recommendations":
+with tab4:
     label("Smart Recommendations")
     recs = []
     if avg_spending > 700:
