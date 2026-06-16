@@ -11,6 +11,17 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+st.markdown("""
+<style>
+[data-testid="stSidebarCollapsedControl"] { display: none !important; }
+[data-testid="collapsedControl"] { display: none !important; }
+button[kind="header"] { display: none !important; }
+section[data-testid="stSidebar"] {
+    width: 300px !important;
+    min-width: 300px !important;
+}
+</style>
+""", unsafe_allow_html=True)
 
 RIKO_SVG = """
 <svg width="130" height="130" viewBox="270 55 150 260" xmlns="http://www.w3.org/2000/svg" style="shape-rendering:crispEdges;">
