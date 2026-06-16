@@ -27,6 +27,20 @@ html, body, [class*="css"] {
     ) !important;
     background-attachment: fixed !important;
 }
+/* Force sidebar always open — hide collapse button */
+[data-testid="stSidebarCollapsedControl"] {
+    display: none !important;
+}
+[data-testid="stSidebarContent"] {
+    transform: none !important;
+}
+section[data-testid="stSidebar"][aria-expanded="false"] {
+    margin-left: 0 !important;
+    transform: translateX(0) !important;
+    width: 280px !important;
+    min-width: 280px !important;
+    visibility: visible !important;
+}
 
 .block-container {
     padding-top: 1.5rem !important;
