@@ -108,7 +108,7 @@ personal-finance-intelligence-system/
 ---
 
 ## 📸 Dashboard Preview
-
+LIVE URL : https://finintel.streamlit.app/
 <img width="1431" height="864" alt="image" src="https://github.com/user-attachments/assets/e091ea3b-40fd-4671-8b2b-573eeb25e31e" />
 
 
